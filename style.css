@@ -44,11 +44,12 @@ margin-top: 20px;
 .main__title-off {
 animation: tittle_disappear 1.5s 1s linear both
 }
+
 .main__button {
-    margin-top: 50px;
     text-align: center;
     width: 300px;
     height: 50px;
+    margin-top: 50px;
     font-size: 22px;
     line-height: 50px;
     background-color: #888;
@@ -100,6 +101,7 @@ animation: tittle_disappear 1.5s 1s linear both
 @keyframes button_disappear {
     100% {
         opacity: 0;
+       
     }
 }
 @keyframes tittle_disappear {
@@ -109,5 +111,25 @@ animation: tittle_disappear 1.5s 1s linear both
     }
     100% {
         transform: scale(0);
+        
     }
 }
+
+
+div {
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 80%;
+    margin: 20px auto;
+    font-size: 60px;
+    letter-spacing: 1px;
+   }
+ 
+   .cursor {
+    opacity: 0;
+    transition: .2s;
+   }
+ 
+ 
+   .cursor.active {
+    opacity: 1;
+   }
