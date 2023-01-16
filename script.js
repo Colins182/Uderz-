@@ -1,7 +1,7 @@
 const newGame = document.querySelector('.main__button')
 const title = document.querySelector('.main__title')
 const main = document.querySelector('.main')
-
+const skip = document.querySelector('.skip')
 
 const startGame = () => {
     newGame.removeEventListener('click', startGame)
@@ -10,17 +10,20 @@ const startGame = () => {
     }, 3000)
 newGame.classList.add('main__button-off')
 title.classList.add('main__title-off')
-newGameButtonOn = true
 setTimeout(() => {
    setInterval(addLetter, 200)
    setInterval(cursorAnimation, 400);
+   skip.classList.add('active')
 }, 3000)
 }
 
  newGame.addEventListener('click', startGame)
 
-
-
+// SKIP BUTTON
+skip.addEventListener('click', function() {
+    deleteText()
+      skip.classList.remove('active')
+})
 
 
  const spanText = document.querySelector('.text__text');
@@ -45,6 +48,7 @@ setTimeout(() => {
           }
           spanCursor.classList.remove('active');
             setTimeout(deleteText, 2000)
+            skip.classList.remove('active')
      }
     } 
     if((txtLetter >= 0) && (txtNumber < txt.length) ) {
@@ -69,7 +73,7 @@ const deleteText = () => {
     setInterval(timerCounting, 1000)
 }
 
-
+// Odliczanie do początku gry
 const timeSpan = document.querySelector('.timer__counting');
 let timeToGame = 3
 
@@ -78,9 +82,11 @@ const timerCounting = () => {
     timeToGame--
     timeSpan.textContent = timeToGame
 } else { 
-    for (let i = 1; i < 1000000; i++) {
+    for (let i = 1; i < 100; i++) {
         window.clearInterval(i);
-        timer.remove()
       }
+      timer.remove()
+      showStatistics()
+      setInterval(showingPicture, 1000)
 }
 }

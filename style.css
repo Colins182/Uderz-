@@ -186,3 +186,20 @@ margin-top: 20px;
     
     }
 }
+
+.skip{
+    position: absolute;
+    bottom: 2vh;
+    right: 2vh;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    display: none
+    
+}
+.skip__span {
+    font-family: 'Share Tech Mono', monospace;
+}
+.skip.active {
+    display: block;
+}
