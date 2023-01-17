@@ -7,10 +7,12 @@
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     font-family: arial;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
 }
 body {
     background-color: deepskyblue;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 .main {
     display: flex;
@@ -21,7 +23,7 @@ body {
     top:50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
+    display: block;
 }
 .main__title {
     display: flex;
@@ -78,7 +80,7 @@ animation: tittle_disappear 1.5s 1s linear both
 }
 @keyframes title1_3_move {
     0% {
-        transform: translatex(-200%);
+        transform: translatex(-250%);
     }
     100% {
         transform: translatex(0%);
@@ -86,7 +88,7 @@ animation: tittle_disappear 1.5s 1s linear both
 }
 @keyframes title2_move {
     0% {
-        transform: translatex(800%);
+        transform: translatex(1400%);
     }
     100% {
         transform: translatex(0%);
@@ -118,7 +120,7 @@ animation: tittle_disappear 1.5s 1s linear both
 }
 
 
-div {
+.text {
     font-family: Arial, Helvetica, sans-serif;
     max-width: 80%;
     margin: 20px auto;
@@ -202,4 +204,37 @@ margin-top: 20px;
 }
 .skip.active {
     display: block;
+}
+.game {
+    height: 100vh;
+    position: relative;
+   max-width: 1440px;
+   margin: 0 auto;
+   display: none;
+}
+.game__statistics {
+    position: absolute;
+    display: flex;
+    margin: 0 auto;
+    top: 100%;
+    left: 0%;
+    transform: translate(-0%, -100%);
+    justify-content: space-between;
+    width: 100%;
+    
+    
+}
+.statistic {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+     font-size: 12px;
+     align-items: center;
+     line-height: 20px;
+}
+@media (min-width: 768px) {
+    .statistic {
+        font-size: 18px;
+        line-height: 30px;
+    }
 }

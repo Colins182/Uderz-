@@ -69,7 +69,7 @@ const timer = document.querySelector('.timer')
 const deleteText = () => {
     document.querySelector('.text').remove()
     timer.classList.add('active')
-    // setTimeout(timerCounting, 1000)  
+    skip.remove() 
     setInterval(timerCounting, 1000)
 }
 
@@ -89,4 +89,18 @@ const timerCounting = () => {
       showStatistics()
       setInterval(showingPicture, 1000)
 }
+}
+
+
+
+// GAME STARTS
+
+const game = document.querySelector('.game')
+
+const showStatistics = () => {
+game.style.display = 'block'
+}
+
+const showingPicture = () => {
+    
 }
