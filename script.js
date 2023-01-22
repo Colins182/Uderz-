@@ -87,7 +87,7 @@ const timerCounting = () => {
       }
       timer.remove()
       showStatistics()
-      setInterval(showingPicture, 1000)
+      setInterval(showingPicture, 2000)
 }
 }
 
@@ -96,11 +96,53 @@ const timerCounting = () => {
 // GAME STARTS
 
 const game = document.querySelector('.game')
+const gamePicture = document.querySelector('.gamePicture')
+
+const lifePoints = document.querySelector('.life-points__number')
+const level = document.querySelector('.level__number')
+const gamePoints = document.querySelector('.game-points__number')
+
+let lifePointsNumber = 10
+let levelNumber = 1
+let GamePointsNumber = 0
+
+
 
 const showStatistics = () => {
 game.style.display = 'block'
 }
 
+
+
 const showingPicture = () => {
-    
+  
+   
+    gamePicture.classList.toggle('on')
+    const gamePlaceHeight = document.querySelector('.gamePlace').clientHeight
+    const gamePlaceWidth = document.querySelector('.game__statistics').clientWidth
+    const gamePictureWidth = document.querySelector('.gamePicture').clientWidth
+const gamePictureHeight = document.querySelector('.gamePicture').clientHeight
+
+
+
+    let pictureTop = Math.random() * gamePlaceHeight - gamePictureHeight 
+    let pictureLeft = Math.random() * gamePlaceWidth - gamePictureWidth 
+
+
+    if(pictureTop < 0) {
+     gamePicture.style.top = pictureTop + gamePictureHeight + 'px' 
+    } else gamePicture.style.top = pictureTop + 'px'
+
+if(pictureLeft < 0) {
+    gamePicture.style.left = pictureLeft + gamePictureWidth + 'px'
+} else gamePicture.style.left = pictureLeft + 'px'
+
 }
+
+
+gamePicture.addEventListener('click', function() {
+console.log('chuj');
+gamePicture.classList.remove('on')
+++GamePointsNumber
+gamePoints.textContent = GamePointsNumber
+})

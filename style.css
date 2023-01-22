@@ -7,7 +7,7 @@
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     font-family: arial;
-    color: white;
+    /* color: white; */
     font-family: 'Press Start 2P', cursive;
 }
 body {
@@ -31,6 +31,7 @@ body {
     font-size: 40px;
     align-items: center;
     justify-content: center;
+    color: white;
 }
 .title {
 font-family: 'Press Start 2P', cursive;
@@ -115,6 +116,7 @@ animation: tittle_disappear 1.5s 1s linear both
     }
     100% {
         transform: scale(0);
+       
         
     }
 }
@@ -126,10 +128,10 @@ animation: tittle_disappear 1.5s 1s linear both
     margin: 20px auto;
     font-size: 60px;
     letter-spacing: 1px;
+    color: white;
    }
 
    .text__text {
-    color: white;
     font-size: 20px;
     font-family: 'Share Tech Mono', monospace;
    }
@@ -137,9 +139,8 @@ animation: tittle_disappear 1.5s 1s linear both
    .text__cursor {
     opacity: 0;
     transition: .2s;
-    color: white;
     font-size: 20px;
-    
+    font-family: Arial, Helvetica, sans-serif;
    }
  
  
@@ -196,7 +197,7 @@ margin-top: 20px;
     color: white;
     font-size: 32px;
     cursor: pointer;
-    display: none
+    display: none;
     
 }
 .skip__span {
@@ -231,10 +232,42 @@ margin-top: 20px;
      font-size: 12px;
      align-items: center;
      line-height: 20px;
+     color: white;
 }
 @media (min-width: 768px) {
     .statistic {
         font-size: 18px;
         line-height: 30px;
     }
+}
+
+.gamePlace {
+    position: relative;
+    width: 100vw;
+    height: 90vh;
+}
+.gamePicture {
+position: absolute;
+display: none;
+background-image: url(janglowa.png);
+width: 18vw;
+height: 18vh;
+background-size: contain;
+background-position: center;
+background-origin: content-box;
+background-repeat: no-repeat;
+
+}
+.gamePicture.on {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .gamePicture{
+        width: 12vw;
+height: 12vh;
+    }
+}
+@media (min-width: 1440px) {
+    
 }
