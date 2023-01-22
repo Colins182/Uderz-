@@ -87,7 +87,7 @@ const timerCounting = () => {
       }
       timer.remove()
       showStatistics()
-      setInterval(showingPicture, 2000)
+      setInterval(showingPicture, 800)
 }
 }
 
@@ -102,11 +102,11 @@ const lifePoints = document.querySelector('.life-points__number')
 const level = document.querySelector('.level__number')
 const gamePoints = document.querySelector('.game-points__number')
 
-let lifePointsNumber = 10
+let lifePointsNumber = 10.5
 let levelNumber = 1
 let GamePointsNumber = 0
 
-
+let lostLife = true
 
 const showStatistics = () => {
 game.style.display = 'block'
@@ -137,12 +137,39 @@ if(pictureLeft < 0) {
     gamePicture.style.left = pictureLeft + gamePictureWidth + 'px'
 } else gamePicture.style.left = pictureLeft + 'px'
 
+if(lostLife) {
+    lifePointsNumber = lifePointsNumber - 0.5
+    let floorlifePointsNumber = Math.floor(lifePointsNumber)
+    lifePoints.textContent = floorlifePointsNumber
+}
+
+if(lifePointsNumber < 1) {
+    console.log('przegrales');
+    for (let i = 1; i < 1000; i++) {
+        window.clearInterval(i);
+      }
+}
+
+
+
 }
 
 
 gamePicture.addEventListener('click', function() {
+    
 console.log('chuj');
 gamePicture.classList.remove('on')
 ++GamePointsNumber
 gamePoints.textContent = GamePointsNumber
+
+lostLife = false
+showingPicture()
+lostLife = true
+
+for (let i = 1; i < 1000; i++) {
+    window.clearInterval(i);
+  }
+  setInterval(showingPicture, 800)
+  
+
 })
