@@ -3,6 +3,8 @@ const title = document.querySelector('.main__title')
 const main = document.querySelector('.main')
 const skip = document.querySelector('.skip')
 
+
+
 const startGame = () => {
     newGame.removeEventListener('click', startGame)
     setTimeout(() => {
@@ -78,6 +80,10 @@ const timeSpan = document.querySelector('.timer__counting');
 let timeToGame = 3
 
 const timerCounting = () => {
+
+    const timer = document.querySelector('.timer')
+    const timeSpan = document.querySelector('.timer__counting');
+
     if(timeToGame > 0) {
     timeToGame--
     timeSpan.textContent = timeToGame
@@ -85,7 +91,8 @@ const timerCounting = () => {
     for (let i = 1; i < 100; i++) {
         window.clearInterval(i);
       }
-      timer.remove()
+    //   timer.remove()
+    timer.classList.remove('active')
       showStatistics()
       setInterval(showingPicture, 800)
 }
@@ -102,7 +109,7 @@ const lifePoints = document.querySelector('.life-points__number')
 const level = document.querySelector('.level__number')
 const gamePoints = document.querySelector('.game-points__number')
 
-let lifePointsNumber = 10.5
+let lifePointsNumber = 2.5
 let levelNumber = 1
 let GamePointsNumber = 0
 
@@ -115,9 +122,12 @@ game.style.display = 'block'
 
 
 const showingPicture = () => {
-  
-   
+const gamePicture = document.querySelector('.gamePicture')
+
+const lifePoints = document.querySelector('.life-points__number')
+
     gamePicture.classList.toggle('on')
+    
     const gamePlaceHeight = document.querySelector('.gamePlace').clientHeight
     const gamePlaceWidth = document.querySelector('.game__statistics').clientWidth
     const gamePictureWidth = document.querySelector('.gamePicture').clientWidth
@@ -148,15 +158,37 @@ if(lifePointsNumber < 1) {
     for (let i = 1; i < 1000; i++) {
         window.clearInterval(i);
       }
+      document.body.innerHTML += '<div class="lose"><div class="lose__Text">PRZEGRAŁEŚ</div><div class="lose__button">NOWA GRA</div></div>'
+      const replayGame = document.querySelector('.lose__button')
+const lose = document.querySelector('.lose')
+
+replayGame.addEventListener('click', function() {
+
+    timeToGame = 3
+    document.querySelector('.timer__counting').textContent = timeToGame
+    document.querySelector('.timer').classList.add('active')
+    lose.remove()
+    setInterval(timerCounting, 1000)
+    lifePointsNumber = 10.5
+    GamePointsNumber = 0
+    document.querySelector('.game-points__number').textContent = GamePointsNumber
+    document.querySelector('.life-points__number').textContent = Math.floor(lifePointsNumber)
+
+})
+
+}
+
+gamePicture.addEventListener('click', pictureClick)
+
 }
 
 
-
-}
-
-
-gamePicture.addEventListener('click', function() {
+const pictureClick = () => {
     
+    const gamePicture = document.querySelector('.gamePicture')
+    const gamePoints = document.querySelector('.game-points__number')
+
+
 console.log('chuj');
 gamePicture.classList.remove('on')
 ++GamePointsNumber
@@ -172,4 +204,6 @@ for (let i = 1; i < 1000; i++) {
   setInterval(showingPicture, 800)
   
 
-})
+}
+
+
