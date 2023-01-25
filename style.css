@@ -14,7 +14,7 @@ body {
     background-color: deepskyblue;
     overflow: hidden;
 }
-.main {
+.main, .level-info {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -25,13 +25,27 @@ body {
     transform: translate(-50%, -50%);
     display: block;
 }
-.main__title {
+.main__title, .levelspan {
     display: flex;
     flex-direction: column;
     font-size: 40px;
     align-items: center;
     justify-content: center;
     color: white;
+}
+
+.level-info {
+    top:25%;
+    display: none;
+}
+.level-info.on {
+    display: block;
+}
+.levelspan {
+    margin-top: 30px;
+}
+.level-info__level {
+    color: yellow;
 }
 .title {
 font-family: 'Press Start 2P', cursive;
@@ -68,7 +82,7 @@ animation: tittle_disappear 1.5s 1s linear both
     animation: button_disappear 1s linear both;
 }
 @media (min-width: 768px) {
-    .main__title {
+    .main__title, .levelspan {
         font-size: 80px;
     }
     .main__button {

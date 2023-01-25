@@ -3,7 +3,7 @@ const title = document.querySelector('.main__title')
 const main = document.querySelector('.main')
 const skip = document.querySelector('.skip')
 
-
+let intervalTime = 900
 
 const startGame = () => {
     newGame.removeEventListener('click', startGame)
@@ -88,13 +88,13 @@ const timerCounting = () => {
     timeToGame--
     timeSpan.textContent = timeToGame
 } else { 
-    for (let i = 1; i < 100; i++) {
+    for (let i = 1; i < 100000; i++) {
         window.clearInterval(i);
       }
     //   timer.remove()
     timer.classList.remove('active')
       showStatistics()
-      setInterval(showingPicture, 800)
+      setInterval(showingPicture, intervalTime)
 }
 }
 
@@ -109,8 +109,7 @@ const lifePoints = document.querySelector('.life-points__number')
 const level = document.querySelector('.level__number')
 const gamePoints = document.querySelector('.game-points__number')
 
-let lifePointsNumber = 2.5
-let levelNumber = 1
+let lifePointsNumber = 10.5
 let GamePointsNumber = 0
 
 let lostLife = true
@@ -118,6 +117,7 @@ let lostLife = true
 const showStatistics = () => {
 game.style.display = 'block'
 }
+
 
 
 
@@ -155,7 +155,7 @@ if(lostLife) {
 
 if(lifePointsNumber < 1) {
     console.log('przegrales');
-    for (let i = 1; i < 1000; i++) {
+    for (let i = 1; i < 100000; i++) {
         window.clearInterval(i);
       }
       document.body.innerHTML += '<div class="lose"><div class="lose__Text">PRZEGRAŁEŚ</div><div class="lose__button">NOWA GRA</div></div>'
@@ -173,7 +173,10 @@ replayGame.addEventListener('click', function() {
     GamePointsNumber = 0
     document.querySelector('.game-points__number').textContent = GamePointsNumber
     document.querySelector('.life-points__number').textContent = Math.floor(lifePointsNumber)
-
+    document.querySelector('.level__number').textContent = 'KLERYK'
+    document.querySelector('.level__number').style.color = 'white'
+    intervalTime = 900
+    document.querySelector('.level-info__level').style.color = 'yellow'
 })
 
 }
@@ -188,22 +191,60 @@ const pictureClick = () => {
     const gamePicture = document.querySelector('.gamePicture')
     const gamePoints = document.querySelector('.game-points__number')
 
-
-console.log('chuj');
+    for (let i = 1; i < 100000; i++) {
+        window.clearInterval(i);
+      }
 gamePicture.classList.remove('on')
 ++GamePointsNumber
 gamePoints.textContent = GamePointsNumber
 
-lostLife = false
+if(GamePointsNumber === 10) {
+    document.querySelector('.level-info').classList.add('on')
+    document.querySelector('.level-info__level').textContent = 'PROBOSZCZ'
+    document.querySelector('.level__number').textContent = 'PROBOSZCZ'
+    intervalTime = 800
+    setTimeout(levelChanger, 2000) 
+   setTimeout(() => {
+    setInterval(showingPicture, intervalTime)
+   }, 3000);
+   lifePointsNumber += 0.5
+} else if(GamePointsNumber === 20){
+    document.querySelector('.level-info').classList.add('on') 
+    document.querySelector('.level-info__level').textContent = 'KARDYNAŁ'
+    document.querySelector('.level__number').textContent = 'KARDYNAŁ'
+    intervalTime = 700
+    setTimeout(levelChanger, 2000) 
+   setTimeout(() => {
+    setInterval(showingPicture, intervalTime)
+   }, 3000);
+   lifePointsNumber += 0.5
+} else if(GamePointsNumber === 30) {
+    document.querySelector('.level-info').classList.add('on') 
+    document.querySelector('.level-info__level').textContent = 'SKURWYSYN'
+    document.querySelector('.level-info__level').style.color = 'red'
+    document.querySelector('.level__number').textContent = 'PAPIEŻ'
+    document.querySelector('.level__number').style.color = 'red'
+    intervalTime = 600
+    setTimeout(levelChanger, 2000) 
+   setTimeout(() => {
+    setInterval(showingPicture, intervalTime)
+   }, 3000);
+   lifePointsNumber += 0.5
+} else {
+    lostLife = false
 showingPicture()
 lostLife = true
+setInterval(showingPicture, intervalTime)
+}
 
-for (let i = 1; i < 1000; i++) {
-    window.clearInterval(i);
-  }
-  setInterval(showingPicture, 800)
-  
+
+
 
 }
 
+const levelChanger = () => {
+console.log('kutassssss');
+    
+        document.querySelector('.level-info').classList.remove('on')
+    }
 
