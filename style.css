@@ -143,6 +143,7 @@ animation: tittle_disappear 1.5s 1s linear both
     font-size: 60px;
     letter-spacing: 1px;
     color: white;
+    line-height: 20px;
    }
 
    .text__text {
@@ -290,6 +291,11 @@ height: 12vh;
     top:80%;
     animation: loseAnimation 1s linear both;
 }
+/* .lose.on {
+    animation: loseAnimation 1s linear both;
+    display: flex;
+} */
+
 @keyframes loseAnimation {
     0% {
         opacity: 0;
@@ -302,4 +308,7 @@ height: 12vh;
 }
 .lose__button {
 color: white;
+}
+audio {
+    display: none;
 }

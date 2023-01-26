@@ -5,6 +5,12 @@ const skip = document.querySelector('.skip')
 
 let intervalTime = 900
 
+const musicPlay = () => {
+    document.getElementById('mainMusic').play()
+}
+
+musicPlay()
+
 const startGame = () => {
     newGame.removeEventListener('click', startGame)
     setTimeout(() => {
@@ -13,11 +19,13 @@ const startGame = () => {
 newGame.classList.add('main__button-off')
 title.classList.add('main__title-off')
 setTimeout(() => {
-   setInterval(addLetter, 200)
+   setInterval(addLetter, 60)
    setInterval(cursorAnimation, 400);
    skip.classList.add('active')
 }, 3000)
+document.getElementById('mainMusic').play()
 }
+
 
  newGame.addEventListener('click', startGame)
 
@@ -30,7 +38,7 @@ skip.addEventListener('click', function() {
 
  const spanText = document.querySelector('.text__text');
  const spanCursor = document.querySelector('.text__cursor');
- const txt = ['tekst1', 'tekst2', 'tekst3']
+ const txt = ['Witaj, żółty pedofil próboje uciec, nie pozwól mu na to. Za każdym razem gdy jego żółta morda będzie pojawiać się na planszy uderz go! Zrób to tyle razy ile potrafisz!', ' Jan Paweł II jest bardzo przebiegły. Im więcej razy go uderzysz tym jego szybkość ucieczki będzie się zwiększać. Spróbuj dotrzeć na najwyższy poziom by pokazać mu kto tu rządzi!', 'Powodzenia!!!']
 
  let txtNumber = 0
  let txtLetter = 0
@@ -38,7 +46,7 @@ skip.addEventListener('click', function() {
  const addLetter = () => {
 
     if((txtLetter >= txt[txtNumber].length )) {
-        txtLetter = -20
+        txtLetter = -60
         txtNumber++
         if(txtNumber < txt.length) {
         setTimeout(() => {
@@ -91,7 +99,7 @@ const timerCounting = () => {
     for (let i = 1; i < 100000; i++) {
         window.clearInterval(i);
       }
-    //   timer.remove()
+   
     timer.classList.remove('active')
       showStatistics()
       setInterval(showingPicture, intervalTime)
@@ -120,7 +128,7 @@ game.style.display = 'block'
 
 
 
-
+// MECHANIZM POJAWIANIA SIE OBRAZKA
 const showingPicture = () => {
 const gamePicture = document.querySelector('.gamePicture')
 
@@ -154,20 +162,25 @@ if(lostLife) {
 }
 
 if(lifePointsNumber < 1) {
-    console.log('przegrales');
+    
+    // document.getElementById('loseMusic').play()
     for (let i = 1; i < 100000; i++) {
         window.clearInterval(i);
       }
+      
       document.body.innerHTML += '<div class="lose"><div class="lose__Text">PRZEGRAŁEŚ</div><div class="lose__button">NOWA GRA</div></div>'
       const replayGame = document.querySelector('.lose__button')
 const lose = document.querySelector('.lose')
-
+    
 replayGame.addEventListener('click', function() {
 
     timeToGame = 3
     document.querySelector('.timer__counting').textContent = timeToGame
     document.querySelector('.timer').classList.add('active')
     lose.remove()
+    
+  document.getElementById('loseMusic').pause()
+  document.getElementById('mainMusic2').play()
     setInterval(timerCounting, 1000)
     lifePointsNumber = 10.5
     GamePointsNumber = 0
@@ -178,18 +191,26 @@ replayGame.addEventListener('click', function() {
     intervalTime = 900
     document.querySelector('.level-info__level').style.color = 'yellow'
 })
-
+document.getElementById('mainMusic').pause()
+document.getElementById('loseMusic').play()
 }
 
 gamePicture.addEventListener('click', pictureClick)
 
 }
 
-
+// KLIKANIE W OBRAZEK
 const pictureClick = () => {
-    
     const gamePicture = document.querySelector('.gamePicture')
     const gamePoints = document.querySelector('.game-points__number')
+    if(!document.getElementById('hitSound').paused) {
+        document.getElementById('hitSound2').play()
+       
+    }
+
+    document.getElementById('hitSound').play()
+
+  
 
     for (let i = 1; i < 100000; i++) {
         window.clearInterval(i);
@@ -198,7 +219,7 @@ gamePicture.classList.remove('on')
 ++GamePointsNumber
 gamePoints.textContent = GamePointsNumber
 
-if(GamePointsNumber === 10) {
+if(GamePointsNumber === 20) {
     document.querySelector('.level-info').classList.add('on')
     document.querySelector('.level-info__level').textContent = 'PROBOSZCZ'
     document.querySelector('.level__number').textContent = 'PROBOSZCZ'
@@ -208,7 +229,7 @@ if(GamePointsNumber === 10) {
     setInterval(showingPicture, intervalTime)
    }, 3000);
    lifePointsNumber += 0.5
-} else if(GamePointsNumber === 20){
+} else if(GamePointsNumber === 40){
     document.querySelector('.level-info').classList.add('on') 
     document.querySelector('.level-info__level').textContent = 'KARDYNAŁ'
     document.querySelector('.level__number').textContent = 'KARDYNAŁ'
@@ -218,7 +239,7 @@ if(GamePointsNumber === 10) {
     setInterval(showingPicture, intervalTime)
    }, 3000);
    lifePointsNumber += 0.5
-} else if(GamePointsNumber === 30) {
+} else if(GamePointsNumber === 80) {
     document.querySelector('.level-info').classList.add('on') 
     document.querySelector('.level-info__level').textContent = 'SKURWYSYN'
     document.querySelector('.level-info__level').style.color = 'red'
@@ -237,14 +258,11 @@ lostLife = true
 setInterval(showingPicture, intervalTime)
 }
 
-
-
-
 }
 
 const levelChanger = () => {
-console.log('kutassssss');
     
         document.querySelector('.level-info').classList.remove('on')
     }
 
+    
