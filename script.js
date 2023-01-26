@@ -38,7 +38,7 @@ skip.addEventListener('click', function() {
 
  const spanText = document.querySelector('.text__text');
  const spanCursor = document.querySelector('.text__cursor');
- const txt = ['Witaj, żółty pedofil próboje uciec, nie pozwól mu na to. Za każdym razem gdy jego żółta morda będzie pojawiać się na planszy uderz go! Zrób to tyle razy ile potrafisz!', ' Jan Paweł II jest bardzo przebiegły. Im więcej razy go uderzysz tym jego szybkość ucieczki będzie się zwiększać. Spróbuj dotrzeć na najwyższy poziom by pokazać mu kto tu rządzi!', 'Powodzenia!!!']
+ const txt = ['Witaj, żółty pedofil próboje uciec, nie pozwól mu na to. Za każdym razem gdy jego żółta morda będzie pojawiać się na ekranie uderz go! Zrób to tyle razy ile potrafisz!', ' Jan Paweł II jest bardzo przebiegły. Im więcej razy go uderzysz tym jego szybkość ucieczki będzie się zwiększać. Spróbuj dotrzeć na najwyższy poziom by pokazać mu kto tu rządzi!', 'Powodzenia!!!']
 
  let txtNumber = 0
  let txtLetter = 0
